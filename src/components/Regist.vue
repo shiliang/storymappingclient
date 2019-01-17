@@ -1,16 +1,37 @@
 <template>
-  <form action="/user/ulogin" method="post">
+  <form>
     <br> <input type="text" name="username" />
     <br> <input type="password" name="password" />
-    <br> <input type="submit" value="登陆" />
-    <button v-on:click="btnRegist">注册</button>
+    <button v-on:click="btnreg">注册</button>
   </form>
 </template>
 
 <script>
-  export default {
-    name: 'Regist'
+import axios from 'axios'
+export default {
+  name: 'Regist',
+  data: function () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    btnreg: function () {
+      let formData = new FormData()
+      formData.append('username', this.username)
+      formData.append('password', this.password)
+      axios.post('/register', formData)
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (err) {
+          console.log(err)
+        })
+    }
   }
+
+}
 </script>
 
 <style scoped>

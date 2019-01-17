@@ -15,7 +15,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "in": "^0.13.2",
+    "local": "^0.3.3",
+    "qs": "^6.6.0",
     "vue": "^2.5.2",
+    "vue-axios": "^2.1.4",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

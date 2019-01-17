@@ -8,9 +8,14 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'login',
+  data: function () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
   methods: {
     btnRegist: function () {
       this.$router.push({path: '/regist'})
@@ -19,7 +24,7 @@ export default {
       let formData = new FormData()
       formData.append('username', this.username)
       formData.append('password', this.password)
-      axios.post('http://localhost:8090/login', formData)
+      this.$axios.post('/login', formData)
         .then(function (response) {
           console.log(response)
         })
