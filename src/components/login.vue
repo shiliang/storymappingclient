@@ -5,6 +5,7 @@
     <button v-on:click="btnLogin">登录</button>
     <button v-on:click="btnRegist">注册</button>
   </form>
+
 </template>
 
 <script>
@@ -22,11 +23,15 @@ export default {
     },
     btnLogin: function () {
       let formData = new FormData()
+      let result = {}
       formData.append('username', this.username)
       formData.append('password', this.password)
       this.$axios.post('/login', formData)
-        .then(function (response) {
-          console.log(response)
+        .then(res => {
+          if (res.status === 200) {
+            result = res.data
+            console.log('获取结果', result) // 在此得到了预期的结果
+          }
         })
         .catch(function (err) {
           console.log(err)
