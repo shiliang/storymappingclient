@@ -3,10 +3,12 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import login from '@/components/login'
 import Regist from '@/components/Regist'
+import Index from '@/components/Index'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -22,6 +24,11 @@ export default new Router({
       path: '/regist',
       name: 'regist',
       component: Regist
+    },
+    {
+      path: '/index/:userId',
+      name: 'Index',
+      component: Index
     }
   ]
 })
