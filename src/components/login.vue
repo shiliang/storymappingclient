@@ -1,28 +1,28 @@
 <template>
   <form>
-    <br> <input type="text" v-model="username" />
-    <br> <input type="password" v-model="password" />
-    <button v-on:click="btnLogin">登录</button>
-    <button v-on:click="btnRegist">注册</button>
+    <br> <input v-model="username" type="text" >
+    <br> <input v-model="password" type="password" >
+    <button @click="btnLogin">登录</button>
+    <button @click="btnRegist">注册</button>
   </form>
 
 </template>
 
 <script>
 export default {
-  name: 'login',
-  data: function () {
+  name: 'Login',
+  data: function() {
     return {
       username: '',
       password: ''
     }
   },
   methods: {
-    btnRegist: function () {
-      this.$router.push({path: '/regist'})
+    btnRegist: function() {
+      this.$router.push({ path: '/regist' })
     },
-    btnLogin: function () {
-      let formData = new FormData()
+    btnLogin: function() {
+      const formData = new FormData()
       let result = {}
       formData.append('username', this.username)
       formData.append('password', this.password)
@@ -33,16 +33,16 @@ export default {
             // 如果登录成功
             if (!this.isEmpty(result['success'])) {
               // 跳到个人主页
-              this.$router.push({name: 'Index', params: {userId: result['success']}})
+              this.$router.push({ name: 'Index', params: { userId: result['success'] }})
             }
           }
         })
-        .catch(function (err) {
+        .catch(function(err) {
           console.log(err)
         })
     },
 
-    isEmpty: function (v) {
+    isEmpty: function(v) {
       switch (typeof v) {
         case 'undefined':
           return true

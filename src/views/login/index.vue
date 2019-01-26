@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm"  class="login-form" auto-complete="on" label-position="left">
+    <el-form ref="loginForm" :model="loginForm" class="login-form" auto-complete="on" label-position="left">
       <h3 class="title">vue</h3>
       <el-form-item prop="username">
         <span class="svg-container">
@@ -36,8 +36,8 @@
 </template>
 
 <script>
-  import store from '../../store'
-  import { getId } from '@/utils/auth'
+import store from '../../store'
+import { getId } from '@/utils/auth'
 // import { isvalidUsername } from '@/utils/validate'
 // import { login } from '@/api/login'
 // import qs from 'qs'
@@ -70,7 +70,8 @@ export default {
       // },
       loading: false,
       pwdType: 'password',
-      redirect: undefined
+      redirect: undefined,
+      userId: ''
     }
   },
   watch: {
@@ -96,7 +97,8 @@ export default {
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
             console.log(getId())
-            this.$router.push({ path: this.redirect || '/' })
+            this.userId = getId()
+            this.$router.push({ name: 'home', params: { userId: this.userId }})
           }).catch(() => {
             this.loading = false
           })

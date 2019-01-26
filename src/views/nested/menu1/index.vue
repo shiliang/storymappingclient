@@ -1,9 +1,9 @@
 <template >
-    <div class="app-container">
-      <div style="padding:30px;">
-    <el-alert :closable="false" title="新建卡片">
-      <router-view />
-    </el-alert>
+  <div class="app-container">
+    <div style="padding:30px;">
+      <el-alert :closable="false" title="新建卡片">
+        <router-view />
+      </el-alert>
     </div>
     <el-form ref="form" :model="form" label-width="120px">
       <el-form-item label="卡片主题" required="true">
@@ -11,7 +11,7 @@
       </el-form-item>
       <el-form-item label="所属计划">
         <el-select v-model="form.belongProject" placeholder="请选择计划" @click.native="searchProjects">
-          <el-option v-for="project in projects" :value="project" :key="project.id" :label="project.title"></el-option>
+          <el-option v-for="project in projects" :value="project" :key="project.id" :label="project.title"/>
         </el-select>
       </el-form-item>
       <el-form-item label="状态">
@@ -21,9 +21,9 @@
           <el-option label="结束" value="end"/>
         </el-select>
       </el-form-item>
-      <el-form-item  label="负责人:" >
+      <el-form-item label="负责人:" >
         <el-col :span="3">
-          <el-input v-model="form.personInCharge" placeholder="负责人"></el-input>
+          <el-input v-model="form.personInCharge" placeholder="负责人"/>
         </el-col>
       </el-form-item>
       <el-form-item label="卡片描述" required="true">
@@ -37,7 +37,6 @@
   </div>
 </template>
 
-
 <script>
 import { addcard } from '@/api/card'
 import { projectlist } from '@/api/project'
@@ -45,11 +44,11 @@ export default {
   data() {
     return {
       form: {
-        "title": '',
-        "belongProject": '',
-        "status": '',
-        "personInCharge": '',
-        "content": ''
+        'title': '',
+        'belongProject': '',
+        'status': '',
+        'personInCharge': '',
+        'content': ''
       },
       projects: {}
     }
@@ -64,16 +63,15 @@ export default {
     },
     onSubmit() {
       // console.log(this.form)
-       this.form.date = new Date()
-       addcard(JSON.parse(JSON.stringify(this.form))).then(response => {
-        if(response.status === 200){
-           alert("添加成功")
-         }else{
-           alert("添加失败")
-         }
-         location.reload()
-       })
-
+      this.form.date = new Date()
+      addcard(JSON.parse(JSON.stringify(this.form))).then(response => {
+        if (response.status === 200) {
+          alert('添加成功')
+        } else {
+          alert('添加失败')
+        }
+        location.reload()
+      })
     },
     onCancel() {
       this.$message({
@@ -90,5 +88,4 @@ export default {
   text-align: center;
 }
 </style>
-
 

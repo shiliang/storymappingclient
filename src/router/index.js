@@ -39,28 +39,6 @@ export const constantRouterMap = [
     }]
   },
 
-  // {
-  //   path: '/example',
-  //   component: Layout,
-  //   redirect: '/example/table',
-  //   name: 'Example',
-  //   meta: { title: 'Example', icon: 'example' },
-  //   children: [
-  //     {
-  //       path: 'table',
-  //       name: 'Table',
-  //       component: () => import('@/views/table/index'),
-  //       meta: { title: 'Table', icon: 'table' }
-  //     },
-  //     {
-  //       path: 'tree',
-  //       name: 'Tree',
-  //       component: () => import('@/views/tree/index'),
-  //       meta: { title: 'Tree', icon: 'tree' }
-  //     }
-  //   ]
-  // },
-
   {
     path: '/form',
     component: Layout,
@@ -73,6 +51,7 @@ export const constantRouterMap = [
       }
     ]
   },
+
   {
     path: '/form',
     component: Layout,
@@ -85,18 +64,6 @@ export const constantRouterMap = [
       }
     ]
   },
-  // {
-  //   path: '/form',
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: 'usercard',
-  //       name: 'Form',
-  //       component: () => import('@/views/form/usercard'),
-  //       meta: { title: '用户卡片', icon: 'form' }
-  //     }
-  //   ]
-  // },
 
   {
     path: '/nested',
@@ -113,41 +80,7 @@ export const constantRouterMap = [
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
         meta: { title: '新建卡片' }// ,
-        // children: [
-        //   {
-        //     path: 'menu1-1',
-        //     component: () => import('@/views/nested/menu1/menu1-1'),
-        //     name: 'Menu1-1',
-        //     meta: { title: 'Menu1-1' }
-        //   },
-        //   {
-        //     path: 'menu1-2',
-        //     component: () => import('@/views/nested/menu1/menu1-2'),
-        //     name: 'Menu1-2',
-        //     meta: { title: 'Menu1-2' }
-        //     // ,
-        //     // children: [
-        //     //   {
-        //     //     path: 'menu1-2-1',
-        //     //     component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-        //     //     name: 'Menu1-2-1',
-        //     //     meta: { title: 'Menu1-2-1' }
-        //     //   },
-        //     //   {
-        //     //     path: 'menu1-2-2',
-        //     //     component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-        //     //     name: 'Menu1-2-2',
-        //     //     meta: { title: 'Menu1-2-2' }
-        //     //   }
-        //     // ]
-        //   },
-        //   {
-        //     path: 'menu1-3',
-        //     component: () => import('@/views/nested/menu1/menu1-3'),
-        //     name: 'Menu1-3',
-        //     meta: { title: 'Menu1-3' }
-        //   }
-        // ]
+
       },
       {
         path: 'menu2',
@@ -157,22 +90,32 @@ export const constantRouterMap = [
     ]
   },
 
-  // {
-  //   path: 'external-link',
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-  //       meta: { title: 'External Link', icon: 'link' }
-  //     }
-  //   ]
-  // },
+  {
+    path: '/home',
+    component: Layout,
+    name: 'home',
+    meta: {
+      title: 'storymapping工具'
+    },
+    children: [
+      {
+        path: '/projects',
+        component: () => import('@/views/homepage/index'),
+        name: 'projects',
+        meta: {
+          title: '产品项目'
+        }
+
+      }
+    ]
+
+  },
 
   { path: '*', redirect: '/404', hidden: true }
 ]
 
 export default new Router({
-  // mode: 'history', //后端支持可开
+  mode: 'history', // 后端支持可开
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })

@@ -1,8 +1,8 @@
 <template>
   <form>
-    <br> <input type="text" v-model="username" />
-    <br> <input type="password" v-model="password" />
-    <button v-on:click="btnreg">注册</button>
+    <br> <input v-model="username" type="text" >
+    <br> <input v-model="password" type="password" >
+    <button @click="btnreg">注册</button>
   </form>
 </template>
 
@@ -10,22 +10,22 @@
 import axios from 'axios'
 export default {
   name: 'Regist',
-  data: function () {
+  data: function() {
     return {
       username: '',
       password: ''
     }
   },
   methods: {
-    btnreg: function () {
-      let formData = new FormData()
+    btnreg: function() {
+      const formData = new FormData()
       formData.append('username', this.username)
       formData.append('password', this.password)
       axios.post('/register', formData)
-        .then(function (response) {
+        .then(function(response) {
           console.log(response)
         })
-        .catch(function (err) {
+        .catch(function(err) {
           console.log(err)
         })
     }
