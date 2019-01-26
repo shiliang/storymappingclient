@@ -9,6 +9,7 @@ Vue.use(Router)
 /* Layout */
 import Layout from '../views/layout/Layout'
 // import app from '../store/modules/app';
+import user from '../store/modules/user'
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -24,6 +25,7 @@ import Layout from '../views/layout/Layout'
   }
 **/
 export const constantRouterMap = [
+
   { path: '/login', component: () => import('@/views/login/index'), hidden: true },
   { path: '/404', component: () => import('@/views/404'), hidden: true },
 
@@ -32,7 +34,7 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/dashboard',
     name: 'Dashboard',
-    hidden: true,
+    hidden: user.Child,
     children: [{
       path: 'dashboard',
       component: () => import('@/views/dashboard/index')
@@ -49,7 +51,8 @@ export const constantRouterMap = [
         component: () => import('@/views/form/index'),
         meta: { title: '新增计划', icon: 'form' }
       }
-    ]
+    ],
+    hidden: user.Child
   },
 
   {
@@ -62,7 +65,8 @@ export const constantRouterMap = [
         component: () => import('@/views/form/userinfo'),
         meta: { title: '个人信息设置', icon: 'form' }
       }
-    ]
+    ],
+    hidden: user.Child
   },
 
   {
@@ -70,6 +74,7 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/nested/menu1',
     name: 'Nested',
+    hidden: user.Child,
     meta: {
       title: '用户卡片',
       icon: 'nested'
@@ -94,6 +99,7 @@ export const constantRouterMap = [
     path: '/home',
     component: Layout,
     name: 'home',
+    hidden: user.Parent,
     meta: {
       title: 'storymapping工具'
     },

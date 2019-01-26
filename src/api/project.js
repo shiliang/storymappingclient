@@ -20,10 +20,13 @@ export function projectview(projectid) {
   })
 }
 
-export function projectlist() {
+export function projectlist(userid) {
   return request({
     url: '/projectlist',
-    method: 'post'
+    method: 'get',
+    params: {
+      userid: userid
+    }
   })
 }
 

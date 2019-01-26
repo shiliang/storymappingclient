@@ -96,9 +96,9 @@ export default {
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
-            console.log(getId())
+            // console.log(getId())
             this.userId = getId()
-            this.$router.push({ name: 'home', params: { userId: this.userId }})
+            this.$router.push({ name: 'home' })
           }).catch(() => {
             this.loading = false
           })

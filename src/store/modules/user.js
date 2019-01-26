@@ -2,6 +2,8 @@ import { login, logout, getInfo } from '@/api/login'
 import { getToken, setToken, removeToken, setId } from '@/utils/auth'
 
 const user = {
+  Parent: false,
+  Child: true,
   state: {
     token: getToken(),
     name: '',
@@ -37,7 +39,7 @@ const user = {
           const data = response.data
           setToken(data.token)
           setId(data.success)
-          console.log(data.success)
+          // console.log(data.success)
           commit('SET_TOKEN', data.token)
           commit('SET_USERID', data.success)
           resolve()
