@@ -36,6 +36,8 @@
 </template>
 
 <script>
+  import store from '../../store'
+  import { getId } from '@/utils/auth'
 // import { isvalidUsername } from '@/utils/validate'
 // import { login } from '@/api/login'
 // import qs from 'qs'
@@ -93,6 +95,7 @@ export default {
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
+            console.log(getId())
             this.$router.push({ path: this.redirect || '/' })
           }).catch(() => {
             this.loading = false
@@ -113,11 +116,11 @@ export default {
     //           console.log(data)
     //           this.$store.dispatch('Login', this.loginForm).then(() => {
     //             this.loading = false
-    //             this.$router.push({ path: this.redirect || '/' })  
+    //             this.$router.push({ path: this.redirect || '/' })
     //           }).catch(() => {
     //             this.loading = false
     //           })
-    //         } 
+    //         }
     //       )
     //     } else {
     //       this.loading = false
