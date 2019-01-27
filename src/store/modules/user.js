@@ -3,7 +3,7 @@ import { getToken, setToken, removeToken, setId } from '@/utils/auth'
 
 const user = {
   Parent: false,
-  Child: true,
+  Child: false,
   state: {
     token: getToken(),
     name: '',
