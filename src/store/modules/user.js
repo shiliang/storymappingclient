@@ -40,6 +40,7 @@ const user = {
           setToken(data.token)
           setId(data.success)
           setProjectId(data.project_id)
+          console.log('hello')
           console.log(data.project_id)
           commit('SET_TOKEN', data.token)
           commit('SET_USERID', data.success)

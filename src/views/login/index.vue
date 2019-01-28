@@ -98,7 +98,7 @@ export default {
             this.loading = false
             // console.log(getId())
             this.userId = getId()
-            this.$router.push({ name: 'home' })
+            this.$router.push({ name: 'Dashboard' })
           }).catch(() => {
             this.loading = false
           })
