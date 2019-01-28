@@ -96,27 +96,6 @@ export const constantRouterMap = [
   },
 
   {
-    path: '/home',
-    component: Layout,
-    name: 'home',
-    hidden: user.Parent,
-    meta: {
-      title: 'storymapping工具'
-    },
-    children: [
-      {
-        path: '/projects',
-        component: () => import('@/views/homepage/index'),
-        name: 'projects',
-        meta: {
-          title: '产品项目'
-        }
-
-      }
-    ]
-
-  },
-  {
     path: '/form',
     component: Layout,
     children: [
@@ -141,6 +120,34 @@ export const constantRouterMap = [
       }
     ],
     hidden: user.Child
+  },
+  {
+    path: '/home',
+    component: Layout,
+    redirect: '/home/projectconf',
+    name: 'home',
+    hidden: user.Child,
+    meta: {
+      title: '产品项目',
+      icon: 'nested'
+    },
+    children: [
+      {
+        path: '/projectconf',
+        component: () => import('@/views/projectconf/index'),
+        name: 'projectconf',
+        meta: {
+          title: '项目设置'
+        }
+      },
+      {
+        path: '/individualwork',
+        component: () => import('@/views/individualwork/index'),
+        name: 'individualwork',
+        meta: { title: '个人工作台' }
+      }
+    ]
+
   },
   { path: '*', redirect: '/404', hidden: true }
 ]
