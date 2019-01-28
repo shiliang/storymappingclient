@@ -41,33 +41,33 @@ export const constantRouterMap = [
     }]
   },
 
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: '新增计划', icon: 'form' }
-      }
-    ],
-    hidden: user.Child
-  },
+  // {
+  //   path: '/form',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/index'),
+  //       meta: { title: '新增计划', icon: 'form' }
+  //     }
+  //   ],
+  //   hidden: user.Child
+  // },
 
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'userinfo',
-        name: 'Form',
-        component: () => import('@/views/form/userinfo'),
-        meta: { title: '个人信息设置', icon: 'form' }
-      }
-    ],
-    hidden: user.Child
-  },
+  // {
+  //   path: '/form',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'userinfo',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/userinfo'),
+  //       meta: { title: '个人信息设置', icon: 'form' }
+  //     }
+  //   ],
+  //   hidden: user.Child
+  // },
 
   {
     path: '/nested',
@@ -116,7 +116,32 @@ export const constantRouterMap = [
     ]
 
   },
-
+  {
+    path: '/form',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Form',
+        component: () => import('@/views/form/index'),
+        meta: { title: '仪表盘', icon: 'form' }
+      }
+    ],
+    hidden: user.Child
+  },
+  {
+    path: '/form',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Form',
+        component: () => import('@/views/form/index'),
+        meta: { title: '迭代管理', icon: 'form' }
+      }
+    ],
+    hidden: user.Child
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 
