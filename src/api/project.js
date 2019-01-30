@@ -49,3 +49,13 @@ export function editproject(projectid) {
     }
   })
 }
+
+export function projectconf(projectid) {
+  return request({
+    url: '/projectdetail',
+    method: 'get',
+    params: {
+      id: projectid
+    }
+  })
+}

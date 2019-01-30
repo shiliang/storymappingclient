@@ -46,3 +46,13 @@ export function editcard(cardid) {
     }
   })
 }
+
+export function cardInchargeList(userId) {
+  return request({
+    url: '/getCardIncharge',
+    method: 'get',
+    params: {
+      id: userId
+    }
+  })
+}
