@@ -18,6 +18,7 @@
         <el-select v-model="form.status" placeholder="请选择状态">
           <el-option label="新建" value="add"/>
           <el-option label="开发" value="dev"/>
+          <el-option label="验证" value="verif"/>
           <el-option label="结束" value="end"/>
         </el-select>
       </el-form-item>

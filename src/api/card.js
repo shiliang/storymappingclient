@@ -27,6 +27,23 @@ export function cardlist() {
   })
 }
 
+export function cardlistByType(type) {
+  return request({
+    url: '/cardlist',
+    method: 'get',
+    params: {
+      type: type
+    }
+  })
+}
+
+export function cardlistbydate() {
+  return request({
+    url: '/cardlistbydate',
+    method: 'post'
+  })
+}
+
 export function delcard(cardid) {
   return request({
     url: '/delcard',

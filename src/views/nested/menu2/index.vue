@@ -104,28 +104,21 @@ export default {
       })
     },
     watchCard(id) {
-      // console.log(id)
       cardview(id).then(response => {
         var res = response.data
         this.form.id = res.id
         this.form.title = res.title
-        // this.form.project = res.project
         var projectid = res.belongProject.id
-        // console.log(projectid)
         this.form.status = res.status
         this.form.personInCharge = res.personInCharge
         this.form.content = res.content
         projectview(projectid).then(re => {
           this.belongProject = re.data
           this.form.project = this.belongProject
-          // console.log(this.belongProject)
         })
         this.dialogFormVisible = true
       })
     },
-    // onSubmit() {
-    //   alert("提交！！！")
-    // }
   },
   computed: {//计算属性
   }
