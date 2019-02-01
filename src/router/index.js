@@ -109,14 +109,24 @@ export const constantRouterMap = [
     hidden: user.Child
   },
   {
-    path: '/form',
+    path: '/iteration',
     component: Layout,
+	meta: {
+      title: '用户卡片',
+      icon: 'nested'
+    },
     children: [
       {
-        path: 'index',
+        path: 'addplan',
         name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: '迭代管理', icon: 'form' }
+        component: () => import('@/views/iteration/addplan/index'),
+        meta: { title: '添加计划', icon: 'form' }
+      },
+	  {
+        path: 'viewplan',
+        name: 'Form',
+        component: () => import('@/views/iteration/viewplan/index'),
+        meta: { title: '查询计划', icon: 'form' }
       }
     ],
     hidden: user.Child
