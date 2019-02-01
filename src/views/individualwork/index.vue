@@ -10,7 +10,10 @@
               <el-button type="text" value = "card.id" @click="viewCard(card)">详情</el-button>
             </div>
             <div class="text item">
-              <label>hello</label>
+              <span>{{ card.type }}</span>
+              <span>敏捷开发</span>
+              <span>{{ card.planTitle }}</span>
+              <span class="time">{{ card.date | formatDate }}</span>
             </div>
 
           </el-card>
@@ -22,7 +25,7 @@
       <el-tab-pane label="已完成的" name="third">权限hahah</el-tab-pane>
     </el-tabs>
 
-    <el-dialog :visible.sync="dialogTableVisible" title="收货地址">
+    <el-dialog :visible.sync="dialogTableVisible" title="卡片详情">
 
       <el-row>
         <el-col :span="24">
@@ -31,6 +34,73 @@
           </div>
         </el-col>
       </el-row>
+      <el-collapse v-model="activeNames" @change="handleChange">
+        <el-collapse-item title="字段" name="1">
+          <el-row>
+            <el-col :span="12">
+              <div class="grid-content bg-purple">
+                <label>状态:</label>
+                <el-input v-model="input"/>
+              </div>
+            </el-col>
+            <el-col :span="12">
+              <div class="grid-content bg-purple-light">
+                <label>负责人:</label>
+                <el-input v-model="input"/>
+
+              </div>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <div class="grid-content bg-purple">
+                <label>优先级:</label>
+                <el-input v-model="input"/>
+              </div>
+            </el-col>
+            <el-col :span="12">
+              <div class="grid-content bg-purple-light">
+                <label>估算工时:</label>
+                <el-input v-model="input"/>
+
+              </div>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <div class="grid-content bg-purple">
+                <label>截止时间:</label>
+                <el-input v-model="input"/>
+              </div>
+            </el-col>
+            <el-col :span="12">
+              <div class="grid-content bg-purple-light">
+                <label>所属计划:</label>
+                <el-input v-model="input"/>
+
+              </div>
+            </el-col>
+          </el-row>
+        </el-collapse-item>
+        <el-collapse-item title="内容" name="2">
+          <div>
+            <p>故事描述:</p>
+            <p id="storydesc"/>
+          </div>
+          <div>
+            <p>验证标准:</p>
+          </div>
+        </el-collapse-item>
+        <el-collapse-item title="卡片层级" name="3">
+          <div>简化流程：设计简洁直观的操作流程；</div>
+          <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
+          <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+        </el-collapse-item>
+        <el-collapse-item title="动态" name="4">
+          <div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+          <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+        </el-collapse-item>
+      </el-collapse>
 
     </el-dialog>
   </div>
@@ -40,27 +110,18 @@
 <script>
 import { cardInchargeList } from '@/api/card'
 import { getId } from '@/utils/auth'
+import { formatDate } from '@/utils/formatDate'
 export default {
   name: 'Index',
+  filters: {
+    formatDate(time) {
+      const date = new Date(time)
+      return formatDate(date, 'yyyy-MM-dd')
+    }
+  },
   data() {
     return {
-      gridData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }],
+      activeNames: ['1'],
       dialogTableVisible: false,
       allchargedcards: [
       ],
@@ -101,7 +162,11 @@ export default {
       // 把card对象渲染页面
       this.currentcard = card
       this.dialogTableVisible = true
+    },
+    handleChange(val) {
+      console.log(val)
     }
+
   }
 }
 </script>
