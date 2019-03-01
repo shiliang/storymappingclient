@@ -36,38 +36,18 @@
 </template>
 
 <script>
-import store from '../../store'
 import { getId } from '@/utils/auth'
-// import { isvalidUsername } from '@/utils/validate'
-// import { login } from '@/api/login'
-// import qs from 'qs'
+import { register } from '@/api/login'
 
 export default {
   name: 'Login',
   data() {
-    // const validateUsername = (rule, value, callback) => {
-    //   if (!isvalidUsername(value)) {
-    //     callback(new Error('请输入正确的用户名'))
-    //   } else {
-    //     callback()
-    //   }
-    // }
-    // const validatePass = (rule, value, callback) => {
-    //   if (value.length < 5) {
-    //     callback(new Error('密码不能小于5位'))
-    //   } else {
-    //     callback()
-    //   }
-    // }
     return {
       loginForm: {
         username: 'admin',
         password: 'admin'
       },
-      // loginRules: {
-      //   username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-      //   password: [{ required: true, trigger: 'blur', validator: validatePass }]
-      // },
+
       loading: false,
       pwdType: 'password',
       redirect: undefined,
@@ -107,30 +87,13 @@ export default {
           return false
         }
       })
+    },
+    handleRegister() {
+      register(this.loginForm.username, this.loginForm.password).then(response => {
+        const data = response.data
+      })
     }
-    // handleLogin() {
-    //   this.showError = null
-    //   this.$refs.loginForm.validate(valid => {
-    //     if (valid) {
-    //       console.log(this.loginForm.username)
-    //       this.loading = true
-    //       login(this.loginForm.username, this.loginForm.password).then(response => {
-    //           console.log(data)
-    //           this.$store.dispatch('Login', this.loginForm).then(() => {
-    //             this.loading = false
-    //             this.$router.push({ path: this.redirect || '/' })
-    //           }).catch(() => {
-    //             this.loading = false
-    //           })
-    //         }
-    //       )
-    //     } else {
-    //       this.loading = false
-    //       console.log('error submit!')
-    //       return false
-    //     }
-    //   })
-    // }
+
   }
 }
 </script>
